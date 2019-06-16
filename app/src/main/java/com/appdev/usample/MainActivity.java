@@ -1,10 +1,12 @@
 package com.appdev.usample;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 
-import com.appdev.lib.utils.TimeUtils;
+import com.appdev.lib.utils.ToastUtils;
+
+import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity_yw";
@@ -13,7 +15,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        String s = TimeUtils.formatMillisToTimeString("yyyy-MM-dd HH:mm:ss", System.currentTimeMillis());
-        Log.d(TAG,s);
+        findViewById(R.id.btn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ToastUtils.shortToast(MainActivity.this, new Random().nextInt(100)+"");
+            }
+        });
     }
 }
